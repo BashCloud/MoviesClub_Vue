@@ -22,6 +22,13 @@ new Vue({
                     localStorage.setItem('movies', JSON.stringify(this.movies));
                 })
         }
+        if(this.movies.length === 0){
+            fetch("Movies.json")
+                .then(response => response.json())
+                .then(json => {
+                    this.movies = json;
+                });
+        }
     },
     methods: {
         nextPage() {
